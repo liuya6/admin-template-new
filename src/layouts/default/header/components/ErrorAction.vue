@@ -46,3 +46,9 @@
     },
   });
 </script>
+
+<style scoped lang="less">
+  .ant-badge {
+    color: inherit;
+  }
+</style>

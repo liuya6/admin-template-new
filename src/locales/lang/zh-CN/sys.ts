@@ -65,16 +65,13 @@ export default {
     signUpFormTitle: '注册',
     forgetFormTitle: '重置密码',
 
-    signInTitle: '开箱即用的中后台管理系统',
-    signInDesc: '输入您的个人详细信息开始使用！',
+    signInTitle: 'xxx中后台管理系统',
     policy: '我同意xxx隐私政策',
     scanSign: `扫码后点击"确认"，即可完成登录`,
 
     loginButton: '登录',
     registerButton: '注册',
     rememberMe: '记住我',
-    forgetPassword: '忘记密码?',
-    otherSignIn: '其他登录方式',
 
     // notify
     loginSuccessTitle: '登录成功',

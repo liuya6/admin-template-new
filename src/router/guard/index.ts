@@ -13,7 +13,7 @@ import nProgress from 'nprogress';
 import projectSetting from '/@/settings/projectSetting';
 import { createParamMenuGuard } from './paramMenuGuard';
 
-// Don't change the order of creation
+// 不要改变创建的顺序
 export function setupRouterGuard(router: Router) {
   createPageGuard(router);
   createPageLoadingGuard(router);
@@ -22,7 +22,7 @@ export function setupRouterGuard(router: Router) {
   createMessageGuard(router);
   createProgressGuard(router);
   createPermissionGuard(router);
-  createParamMenuGuard(router); // must after createPermissionGuard (menu has been built.)
+  createParamMenuGuard(router); // 必须在 createPermissionGuard 之后（菜单已构建。）
   createStateGuard(router);
 }
 
@@ -33,9 +33,9 @@ function createPageGuard(router: Router) {
   const loadedPageMap = new Map<string, boolean>();
 
   router.beforeEach(async (to) => {
-    // The page has already been loaded, it will be faster to open it again, you don’t need to do loading and other processing
+    // 页面已经加载完毕，再次打开会更快，不需要再做加载等处理
     to.meta.loaded = !!loadedPageMap.get(to.path);
-    // Notify routing changes
+    // 通知路由更改
     setRouteChange(to);
 
     return true;
@@ -46,7 +46,7 @@ function createPageGuard(router: Router) {
   });
 }
 
-// Used to handle page loading status
+// 用于处理页面加载状态
 function createPageLoadingGuard(router: Router) {
   const userStore = useUserStoreWithOut();
   const appStore = useAppStoreWithOut();
@@ -79,7 +79,7 @@ function createPageLoadingGuard(router: Router) {
 }
 
 /**
- * The interface used to close the current page to complete the request when the route is switched
+ * 路由切换时关闭当前页面完成请求的接口
  * @param router
  */
 function createHttpGuard(router: Router) {
@@ -89,13 +89,13 @@ function createHttpGuard(router: Router) {
     axiosCanceler = new AxiosCanceler();
   }
   router.beforeEach(async () => {
-    // Switching the route will delete the previous request
+    // 切换路由会删除之前的请求
     axiosCanceler?.removeAllPending();
     return true;
   });
 }
 
-// Routing switch back to the top
+// 路由开关回到顶部
 function createScrollGuard(router: Router) {
   const isHash = (href: string) => {
     return /^#/.test(href);
@@ -104,14 +104,14 @@ function createScrollGuard(router: Router) {
   const body = document.body;
 
   router.afterEach(async (to) => {
-    // scroll top
+    // 滚动顶部
     isHash((to as RouteLocationNormalized & { href: string })?.href) && body.scrollTo(0, 0);
     return true;
   });
 }
 
 /**
- * Used to close the message instance when the route is switched
+ * 用于在路由切换时关闭消息实例
  * @param router
  */
 export function createMessageGuard(router: Router) {
