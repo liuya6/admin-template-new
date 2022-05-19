@@ -1,7 +1,7 @@
 /**
-The routing of this file will not show the layout.
-It is an independent new page.
-the contents of the file still need to log in to access
+ 此文件的路由不会显示布局。
+ 这是一个独立的新页面。
+ 文件内容还是需要登录才能访问
  */
 import type { AppRouteModule } from '/@/router/types';
 
@@ -11,7 +11,7 @@ export const mainOutRoutes: AppRouteModule[] = [
   {
     path: '/main-out',
     name: 'MainOut',
-    component: () => import('/@/views/demo/main-out/index.vue'),
+    component: () => import('/@/views/mainOut/myMainOut/index.vue'),
     meta: {
       title: 'MainOut',
       ignoreAuth: true,
